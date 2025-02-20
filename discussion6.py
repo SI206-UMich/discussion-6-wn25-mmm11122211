@@ -22,7 +22,7 @@ def load_csv(f):
     with open(full_path) as fhand:
         r = csv.reader(fhand)
         rows = []
-        print(f""Add the data from the csv file")
+        print(f"Add the data from the csv file")
         for row in r:
             print(f"Adding {row} to rows")
             rows.append(row)
