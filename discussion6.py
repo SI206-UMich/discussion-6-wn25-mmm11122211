@@ -1,3 +1,4 @@
+import csv
 import unittest
 import os
 
@@ -18,6 +19,14 @@ def load_csv(f):
     base_path = os.path.abspath(os.path.dirname(__file__))
     full_path = os.path.join(base_path, f)
     # use this 'full_path' variable as the file that you open
+    with open(full_path) as fhand:
+        r = csv.reader(fhand)
+        rows = []
+        print(f""Add the data from the csv file")
+        for row in r:
+            print(f"Adding {row} to rows")
+            rows.append(row)
+            print(f"Final value of rows is {rows}")
 
 def get_annual_max(d):
     '''
@@ -68,6 +77,10 @@ class dis7_test(unittest.TestCase):
 
 def main():
     unittest.main(verbosity=2)
-
+    print("----------------------------------------------------------------------")
+    flight_dict = load_csv('daily_visitors.csv')
+    print("Output of load_csv:", flight_dict, "\n")
+    print("Output of get_annual_max:", get_annual_max(flight_dict), "\n")
+    print("Output of get_month_avg:", get_month_avg(flight_dict), "\n")
 if __name__ == '__main__':
     main()
